@@ -1,11 +1,10 @@
-<ion-popover-view style="height: {{(60 * popoverItemCount) + 'px'}};">
+<ion-view title="Language">
     <ion-content>
         <ion-radio ng-repeat="lang in languages.available" class="item"
                    ng-model="languages.selected"
-                   ng-value="lang"
-                   on-tap="languagePopover.hide()">                   
-            {{lang}}
+                   ng-value="lang">
         </ion-radio>
+        {{lang}}
     </ion-content>
-</ion-popover-view>
+</ion-view>
 

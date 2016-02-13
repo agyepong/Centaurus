@@ -4,19 +4,19 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
-   , 'starter.services', 'starter.controllers', 'starter.controllers.send', 'starter.directives', 'starter.filters'])
+   , 'starter.services', 'starter.controllers', 'starter.controllers.smtnav', 'starter.controllers.send', 'starter.directives', 'starter.filters'])
 
 .run(function ($ionicPlatform, $translate) {
-	$ionicPlatform.ready(function () {
-		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-		// for form inputs)
-	    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-		}
-		if (window.StatusBar) {
-			// org.apache.cordova.statusbar required
-			StatusBar.styleDefault();
-		}
+    $ionicPlatform.ready(function () {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
     });
 })
 
@@ -27,39 +27,39 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
 
 .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 
-	// Ionic uses AngularUI Router which uses the concept of states
-	// Learn more here: https://github.com/angular-ui/ui-router
-	// Set up the various states which the app can be in.
-	// Each state's controller can be found in controllers.js
-	$stateProvider
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
 
 	// setup an abstract state for the tabs directive
 	.state('tab', {
-		url : "/tab",
-		abstract : true,
-		templateUrl : "templates/tabs.html"
+	    url: "/tab",
+	    abstract: true,
+	    templateUrl: "templates/tabs.html"
 	})
 
 	// Each tab has its own nav history stack:
 
 	.state('tab.receive', {
-		url : '/receive/',
-		views : {
-			'tab-receive' : {
-				templateUrl : 'templates/tab-receive.html',
-				controller : 'ReceiveCtrl'
-			}
-		}
+	    url: '/receive/',
+	    views: {
+	        'tab-receive': {
+	            templateUrl: 'templates/tab-receive.html',
+	            controller: 'ReceiveCtrl'
+	        }
+	    }
 	})
 
 	.state('tab.wallet', {
-		url : '/wallet/',
-		views : {
-			'tab-wallet' : {
-				templateUrl : 'templates/tab-wallet.html',
-				controller : 'WalletCtrl'
-			}
-		}
+	    url: '/wallet/',
+	    views: {
+	        'tab-wallet': {
+	            templateUrl: 'templates/tab-wallet.html',
+	            controller: 'WalletCtrl'
+	        }
+	    }
 	})
 
 	.state('tab.send', {
@@ -92,26 +92,56 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
 	    }
 	})
 
-	.state('tab.about', {
-		url : '/about/',
-		views : {
-			'tab-about' : {
-				templateUrl : 'templates/tab-about.html',
-				controller : 'AboutCtrl'
-			}
-		}
-	});
+    .state('tab.about', {
+        url: '/about/',
+        views: {
+            'tab-about': {
+                templateUrl: 'templates/tab-about.html',
+                controller: 'AboutCtrl'
+            }
+        }
+    })
 
-	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/wallet/');
+    .state('tab.settings', {
+        url: '/settings/',
+        views: {
+            'tab-settings': {
+                templateUrl: 'templates/settings.html',
+                controller: 'SettingsCtrl'
+            }
+        }
+    })
+
+    .state('tab.currency', {
+        url: '/currency/',
+        views: {
+            'tab-currency': {
+                templateUrl: 'templates/selectCurrency.html',
+                //controller: 'AboutCtrl'
+            }
+        }
+    })
+
+    .state('tab.language', {
+        url: '/language/',
+        views: {
+            'tab-language': {
+                templateUrl: 'templates/selectLanguage.html',
+                //controller: 'AboutCtrl'
+            }
+        }
+    });
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/wallet/');
 
     ///////////////////////////////////////////////////
     /// translate
-	$translateProvider.useStaticFilesLoader({
-	    prefix: 'i18n/',
-	    suffix: '.json'
-	});
-	$translateProvider
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'i18n/',
+        suffix: '.json'
+    });
+    $translateProvider
     .registerAvailableLanguageKeys(['en', 'de', 'fr', 'nl'], {
         'de_*': 'de',
         'fr_*': 'fr',
@@ -119,13 +149,13 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
         '*': 'en'
     });
 
-	var lang = window.localStorage['language'];
-	if (lang)
-	    $translateProvider.preferredLanguage(lang);
-	else 
-	    $translateProvider.determinePreferredLanguage();
+    var lang = window.localStorage['language'];
+    if (lang)
+        $translateProvider.preferredLanguage(lang);
+    else
+        $translateProvider.determinePreferredLanguage();
 
-	$translateProvider.fallbackLanguage("en");
+    $translateProvider.fallbackLanguage("en");
 });
 
 angular.module("pascalprecht.translate")
