@@ -8,4 +8,11 @@
     };
 })
 
-.controller('SettingsCtrl', function ($scope) { });
+.controller('SettingsCtrl', function ($scope, $state, $stateParams) {
+    console.log("$state: " + $state);
+    console.log("$stateParams: " + $stateParams);
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+
+    //$state.transitionTo('settings');
+});

@@ -34,9 +34,48 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
     $stateProvider
 
 	// setup an abstract state for the tabs directive
+    .state('tab.testing', {
+        url: '^/testing',
+        views: {
+            'tab-testing': {
+                templateUrl: 'templates/settings.html',
+                controller: 'SettingsCtrl'
+            }
+        },
+        onEnter: function () {
+            console.log("enter settings");
+        }
+    })
+
+    .state('tab.currency', {
+        url: '/currency',
+        views: {
+            'currency': {
+                templateUrl: 'templates/selectCurrency.html',
+                controller: 'SettingsCtrl'
+            }
+        },
+        onEnter: function () {
+            console.log("enter currency");
+        }
+    })
+
+    .state('tab.language', {
+        url: '/language',
+        views: {
+            'tab-language': {
+                templateUrl: 'templates/selectLanguage.html',
+                controller: 'SettingsCtrl'
+            }
+        },
+        onEnter: function () {
+            console.log("enter language");
+        }
+    })
+
 	.state('tab', {
 	    url: "/tab",
-	    abstract: false,
+	    abstract: true,
 	    templateUrl: "templates/tabs.html"
 	})
 
@@ -99,50 +138,10 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
                 templateUrl: 'templates/tab-about.html',
                 controller: 'AboutCtrl'
             }
-        },
-        onEnter: function () {
-            console.log("enter about");
         }
 
-    })
-
-    .state('tab.settings', {
-        url: '/settings/',
-        views: {
-            'tab-settings': {
-                templateUrl: 'templates/settings.html',
-                controller: 'SettingsCtrl'
-            }
-        }
-    })
-
-    .state('currency', {
-        url: '/currency/',
-        views: {
-            'currency': {
-                templateUrl: 'templates/settings.html',
-                //templateUrl: 'templates/selectCurrency.html',
-                //controller: 'AboutCtrl'
-            }
-        },
-        onEnter: function () {
-            console.log("enter currency");
-        }
-    })
-
-    .state('tab.language', {
-        url: '/language/',
-        views: {
-            'tab-language': {
-                templateUrl: 'templates/selectLanguage.html',
-                //controller: 'AboutCtrl'
-            }
-        },
-        onEnter: function () {
-            console.log("enter language");
-        }
     });
-    
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/wallet/');
 
