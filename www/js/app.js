@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
 	// setup an abstract state for the tabs directive
 	.state('tab', {
 	    url: "/tab",
-	    abstract: true,
+	    abstract: false,
 	    templateUrl: "templates/tabs.html"
 	})
 
@@ -99,7 +99,11 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
                 templateUrl: 'templates/tab-about.html',
                 controller: 'AboutCtrl'
             }
+        },
+        onEnter: function () {
+            console.log("enter about");
         }
+
     })
 
     .state('tab.settings', {
@@ -112,13 +116,17 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
         }
     })
 
-    .state('tab.currency', {
+    .state('currency', {
         url: '/currency/',
         views: {
-            'tab-currency': {
-                templateUrl: 'templates/selectCurrency.html',
+            'currency': {
+                templateUrl: 'templates/settings.html',
+                //templateUrl: 'templates/selectCurrency.html',
                 //controller: 'AboutCtrl'
             }
+        },
+        onEnter: function () {
+            console.log("enter currency");
         }
     })
 
@@ -129,9 +137,12 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
                 templateUrl: 'templates/selectLanguage.html',
                 //controller: 'AboutCtrl'
             }
+        },
+        onEnter: function () {
+            console.log("enter language");
         }
     });
-
+    
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/wallet/');
 
