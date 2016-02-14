@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
     $stateProvider
 
 	// setup an abstract state for the tabs directive
-    .state('tab.testing', {
+    .state('testing', {
         url: '^/testing',
         views: {
             'tab-testing': {
