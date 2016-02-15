@@ -1,0 +1,75 @@
+﻿<ion-side-menus>
+    <ion-side-menu-content ng-controller="NavCtrl">
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="button-icon ion-arrow-left-c">
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showMenu()"></button>
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showRightMenu()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="sidemenuContent" animation="slide-left-right"></ion-nav-view>
+        <div>
+            <ion-tabs class="tabs-icon-bottom">
+
+                <ion-tab title="{{'navigation.receive.title' | translate}}" icon="icon ion-reply" href="#/tab/receive/">
+                    <ion-nav-view name="tab-receive"></ion-nav-view>
+                </ion-tab>
+                <ion-tab title="{{'navigation.wallet.title' | translate}}" icon="icon ion-home" href="#/tab/wallet/">
+                    <ion-nav-view name="tab-wallet"></ion-nav-view>
+                </ion-tab>
+                <ion-tab title="{{'navigation.send.title' | translate}}" icon="icon ion-forward" href="#/tab/send/">
+                    <ion-nav-view name="tab-send"></ion-nav-view>
+                </ion-tab>
+            </ion-tabs>
+        </div>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar bar-header bar-balanced">
+            <h1 class="title">{{'navigation.main.title' | translate}}</h1>
+        </ion-header-bar>
+        <ion-content has-header="true">
+            <ul class="list">
+                <li>
+                    <a ui-sref="app.wallet" class="item" menu-close>{{'navigation.wallet.title' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.contacts" class="item" menu-close>{{'navigation.contacts.title' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.transactions" class="item" menu-close>{{'navigation.transaction.title' | translate}}</a>
+                </li>
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu side="right">
+        <ion-header-bar class="bar bar-header bar-dark">
+            <h1 class="title">{{'navigation.settings.title' | translate}}</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <li>
+                    <a ui-sref="app.wallet" class="item" menu-close>{{'navigation.wallet.title' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.currency" class="item" menu-close>{{'navigation.currency.title' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.language" class="item" menu-close>{{'navigation.language.title' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.testing" class="item" menu-close>Testing</a>
+                </li>
+                <li>
+                    <a ui-sref="app.about" class="item" menu-close>{{'navigation.about.title' | translate}}</a>
+                </li>
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

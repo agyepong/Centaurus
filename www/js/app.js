@@ -33,26 +33,31 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
     // Each state's controller can be found in controllers.js
     $stateProvider
 
+    .state('app', {
+        url: "/app",
+        abstract: true,
+        templateUrl: "templates/sidemenus.html"
+    })
+
 	// setup an abstract state for the tabs directive
-    .state('testing', {
-        url: '^/testing',
+    .state('app.testing', {
+        url: '/testing/',
         views: {
-            'tab-testing': {
-                templateUrl: 'templates/settings.html',
-                controller: 'SettingsCtrl'
+            'sidemenuContent': {
+                templateUrl: 'templates/testing.html',
+                controller: 'TestingCtrl'
             }
         },
         onEnter: function () {
-            console.log("enter settings");
+            console.log("enter testing");
         }
     })
 
-    .state('tab.currency', {
-        url: '/currency',
+    .state('app.currency', {
+        url: '/currency/',
         views: {
-            'currency': {
+            'sidemenuContent': {
                 templateUrl: 'templates/selectCurrency.html',
-                controller: 'SettingsCtrl'
             }
         },
         onEnter: function () {
@@ -60,12 +65,11 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
         }
     })
 
-    .state('tab.language', {
-        url: '/language',
+    .state('app.language', {
+        url: '/language/',
         views: {
-            'tab-language': {
+            'sidemenuContent': {
                 templateUrl: 'templates/selectLanguage.html',
-                controller: 'SettingsCtrl'
             }
         },
         onEnter: function () {
@@ -73,68 +77,65 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
         }
     })
 
-	.state('tab', {
-	    url: "/tab",
-	    abstract: true,
-	    templateUrl: "templates/tabs.html"
-	})
-
 	// Each tab has its own nav history stack:
 
-	.state('tab.receive', {
+	.state('app.receive', {
 	    url: '/receive/',
 	    views: {
-	        'tab-receive': {
+	        'sidemenuContent': {
 	            templateUrl: 'templates/tab-receive.html',
 	            controller: 'ReceiveCtrl'
 	        }
 	    }
 	})
 
-	.state('tab.wallet', {
+	.state('app.wallet', {
 	    url: '/wallet/',
 	    views: {
-	        'tab-wallet': {
+	        'sidemenuContent': {
 	            templateUrl: 'templates/tab-wallet.html',
 	            controller: 'WalletCtrl'
+	        },
+	        'tabmenuContent': {
+	            templateUrl: "templates/tabs.html"
 	        }
 	    }
 	})
 
-	.state('tab.send', {
+	.state('app.send', {
 	    url: '/send/{recipient}',
 	    views: {
-	        'tab-send': {
+	        'sidemenuContent': {
 	            templateUrl: 'templates/tab-send.html',
 	            controller: 'SendCtrl'
 	        }
 	    }
 	})
 
-	.state('tab.transactions', {
+	.state('app.transactions', {
 	    url: '/transactions/',
 	    views: {
-	        'tab-transactions': {
+	        'sidemenuContent': {
 	            templateUrl: 'templates/tab-transactions.html',
 	            controller: 'TransactionsCtrl'
 	        }
 	    }
 	})
 
-	.state('tab.contacts', {
+	.state('app.contacts', {
 	    url: '/contacts/',
 	    views: {
-	        'view-contacts': {
+	        'sidemenuContent': {
 	            templateUrl: 'templates/view-contacts.html',
 	            controller: 'ContactsCtrl'
 	        }
 	    }
 	})
 
-    .state('tab.about', {
+    .state('app.about', {
         url: '/about/',
         views: {
-            'tab-about': {
+            'sidemenuContent': {
                 templateUrl: 'templates/tab-about.html',
                 controller: 'AboutCtrl'
             }
@@ -143,7 +144,7 @@ angular.module('starter', ['ionic', 'ng-cordova', 'pascalprecht.translate',
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/wallet/');
+    $urlRouterProvider.otherwise('/app/wallet/');
 
     ///////////////////////////////////////////////////
     /// translate
